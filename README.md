@@ -3,5 +3,8 @@ docker volume create --name nomad-workspace --opt type=none --opt device=$PWD/co
 ```
 
 ```bash
+terraform init
 terraform apply
 ```
+
+http://172.100.1.2:3000
