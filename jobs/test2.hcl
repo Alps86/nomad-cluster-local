@@ -14,7 +14,7 @@ job "test2" {
         name = "web"
         port = "http"
         tags = [
-          "urlprefix-test2.localhost:9999/"
+          "urlprefix-test2.nomad:9999/"
         ]
         check {
           type     = "http"
