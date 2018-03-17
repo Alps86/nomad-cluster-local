@@ -5,4 +5,7 @@ bind_addr = "${server_ip}"
 client {
   enabled = true
   network_interface = "eth0"
+  options {
+    "docker.cleanup.image" = "false"
+  }
 }

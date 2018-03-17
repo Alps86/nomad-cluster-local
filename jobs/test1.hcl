@@ -1,20 +1,20 @@
-job "test" {
+job "test1" {
   datacenters = ["dc1"]
   type = "service"
 
   update {
     stagger = "5s"
-    max_parallel = 10
+    max_parallel = 3
   }
 
   group "web" {
-    count = 10
+    count = 3
     task "web" {
       service {
         name = "web"
         port = "http"
         tags = [
-          "urlprefix-/"
+          "urlprefix-test.localhost:9999/"
         ]
         check {
           type     = "http"
@@ -28,7 +28,10 @@ job "test" {
         port_map {
           http = 80
         }
-        image = "tutum/hello-world"
+        image = "php:7-apache"
+        volumes = [
+          "/code/test1:/var/www/html"
+        ]
       }
 
       resources {

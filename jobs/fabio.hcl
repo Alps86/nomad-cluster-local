@@ -12,13 +12,13 @@ job "fabio" {
     }
 
     task "fabio" {
-      driver = "exec"
+      driver = "docker"
       config {
-        command = "fabio-1.3.3-go1.7.1-linux_amd64"
-      }
-
-      artifact {
-        source = "https://github.com/eBay/fabio/releases/download/v1.3.3/fabio-1.3.3-go1.7.1-linux_amd64"
+        image = "fabiolb/fabio"
+        port_map {
+          http = 9999
+          ui = 9998
+        }
       }
 
       resources {

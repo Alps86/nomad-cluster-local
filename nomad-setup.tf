@@ -6,6 +6,8 @@ module "servers" {
   server_ips = "${var.server_ips}"
   consul_ips = "${var.server_ips}"
 
+  named_volume = "nomad-workspace"
+
   consul_enabled        = true
   consul_type           = "server"
   consul_version        = "${var.consul_version}"
@@ -24,6 +26,8 @@ module "clients" {
   instances = "${var.nomad_agents}"
   server_ips = "${var.client_ips}"
   consul_ips = "${var.server_ips}"
+
+  named_volume = "nomad-workspace"
 
   consul_enabled        = true
   consul_type           = "client"

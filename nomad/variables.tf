@@ -12,6 +12,10 @@ variable "instances" {
   description = "The number of nomad servers."
 }
 
+variable "named_volume" {
+  description = "Volume for the development"
+}
+
 # Consul configuration
 variable "consul_enabled" {
   description = "Should consul be installed onto the instance?"

@@ -12,7 +12,7 @@ resource "null_resource" "node" {
   }
 
   provisioner "local-exec" {
-    command = "docker run -d --privileged --name ${var.namespace}-${count.index} --ip ${element(var.server_ips, count.index)} --net nomad-cluster --security-opt seccomp=unconfined --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro -t localhost:5000/nomad-base:latest"
+    command = "docker run -d -v ${var.named_volume}:/code --privileged --name ${var.namespace}-${count.index} --ip ${element(var.server_ips, count.index)} --net nomad-cluster --security-opt seccomp=unconfined --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro -t localhost:5000/nomad-base:latest"
   }
 
   connection {
