@@ -40,3 +40,23 @@ module "clients" {
   hashiui_enabled = true
   hashiui_version = "${var.hashiui_version}"
 }
+
+resource "null_resource" "jobs" {
+  connection {
+    host = "${element(var.server_ips, count.index)}"
+    port = "22"
+    user = "root"
+    password = "root"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "export NOMAD_ADDR=http://${element(var.server_ips, count.index)}:4646",
+      "printenv",
+      "nomad server-members",
+      "nomad run jobs/fabio.hcl",
+      "nomad run jobs/test1.hcl",
+      "nomad run jobs/test2.hcl",
+    ]
+  }
+}
