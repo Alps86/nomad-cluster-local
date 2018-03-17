@@ -44,7 +44,6 @@ data "template_file" "startup" {
     consul_version = "${var.consul_version}"
     consul_type    = "${var.consul_type}"
 
-    #consul_config  = "${data.template_file.config_consul.rendered}"
     consul_config  = "${element(data.template_file.config_consul.*.rendered, count.index)}"
 
     nomad_enabled = "${var.nomad_enabled}"

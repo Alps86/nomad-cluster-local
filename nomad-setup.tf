@@ -9,8 +9,6 @@ module "servers" {
   consul_enabled        = true
   consul_type           = "server"
   consul_version        = "${var.consul_version}"
-  consul_join_tag_key   = "${var.consul_join_tag_key}"
-  consul_join_tag_value = "${var.consul_join_tag_value}"
 
   nomad_enabled = true
   nomad_type    = "server"
@@ -30,8 +28,6 @@ module "clients" {
   consul_enabled        = true
   consul_type           = "client"
   consul_version        = "${var.consul_version}"
-  consul_join_tag_key   = "${var.consul_join_tag_key}"
-  consul_join_tag_value = "${var.consul_join_tag_value}"
 
   nomad_enabled = true
   nomad_type    = "client"

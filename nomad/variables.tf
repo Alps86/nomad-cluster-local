@@ -25,14 +25,6 @@ variable "consul_version" {
   description = "Version number for nomad"
 }
 
-variable "consul_join_tag_key" {
-  description = "AWS Tag to use for consul auto-join"
-}
-
-variable "consul_join_tag_value" {
-  description = "Value to search for in auto-join tag to use for consul auto-join"
-}
-
 # Nomad configuration
 variable "nomad_enabled" {
   description = "Is nomad enabled on this instance"

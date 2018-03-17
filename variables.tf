@@ -39,14 +39,6 @@ variable "hashiui_version" {
   description = "Hashi-ui version to install"
 }
 
-variable "consul_join_tag_key" {
-  description = "AWS Tag to use for consul auto-join"
-}
-
-variable "consul_join_tag_value" {
-  description = "Value to search for in auto-join tag to use for consul auto-join"
-}
-
 variable "nomad_servers" {
   description = "The number of nomad servers."
 }

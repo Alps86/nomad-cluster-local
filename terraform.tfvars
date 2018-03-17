@@ -1,8 +1,6 @@
 namespace = "nomad-cluster"
 
 consul_version = "0.9.0"
-consul_join_tag_key = "nomad_consul"
-consul_join_tag_value = "default"
 
 nomad_version = "0.7.0"
 nomad_servers = 3
