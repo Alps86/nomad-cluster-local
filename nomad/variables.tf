@@ -26,7 +26,20 @@ variable "consul_type" {
 }
 
 variable "consul_version" {
-  description = "Version number for nomad"
+  description = "Version number for consul"
+}
+
+# Vault configuration
+variable "vault_enabled" {
+  description = "Should vault be installed onto the instance?"
+}
+
+variable "vault_type" {
+  description = "Is the vault instance a server or client"
+}
+
+variable "vault_version" {
+  description = "Version number for vault"
 }
 
 # Nomad configuration

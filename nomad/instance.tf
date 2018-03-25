@@ -43,8 +43,12 @@ data "template_file" "startup" {
     consul_enabled = "${var.consul_enabled}"
     consul_version = "${var.consul_version}"
     consul_type    = "${var.consul_type}"
-
     consul_config  = "${element(data.template_file.config_consul.*.rendered, count.index)}"
+
+    vault_enabled = "${var.vault_enabled}"
+    vault_version = "${var.vault_version}"
+    vault_type    = "${var.vault_type}"
+    vault_config  = "${element(data.template_file.config_vault.*.rendered, count.index)}"
 
     nomad_enabled = "${var.nomad_enabled}"
     nomad_version = "${var.nomad_version}"
@@ -59,6 +63,16 @@ data "template_file" "startup" {
 data "template_file" "config_nomad" {
   count = "${length(var.server_ips)}"
   template = "${file("${path.module}/templates/nomad-${var.nomad_type}.hcl.tpl")}"
+
+  vars {
+    instances = "${length(var.server_ips)}"
+    server_ip = "${element(var.server_ips, count.index)}"
+  }
+}
+
+data "template_file" "config_vault" {
+  count = "${length(var.server_ips)}"
+  template = "${file("${path.module}/templates/vault-${var.vault_type}.hcl.tpl")}"
 
   vars {
     instances = "${length(var.server_ips)}"

@@ -31,20 +31,16 @@ variable "consul_version" {
   description = "Consul version to install"
 }
 
+variable "vault_version" {
+  description = "Vault version to install"
+}
+
 variable "nomad_version" {
   description = "Nomad version to install"
 }
 
 variable "hashiui_version" {
   description = "Hashi-ui version to install"
-}
-
-variable "nomad_servers" {
-  description = "The number of nomad servers."
-}
-
-variable "nomad_agents" {
-  description = "The number of nomad agents"
 }
 
 variable "public_key_path" {
