@@ -36,8 +36,12 @@ vault policy write nomad-server nomad-server-policy.hcl
 # Create the token role with Vault
 ```bash
 vault write /auth/token/roles/nomad-cluster @nomad-cluster-role.json
-vault token-create -policy nomad-server -period 72h -orphan
+vault token-create -policy nomad-server -period 72h -orphan -id=d2756bbc-28b0-e3f4-cbe5-9ee8c7c7e795
 # on nomad server
-echo "  Environment=VAULT_TOKEN=zzzzzzzzzzzzzzzz" >> /etc/systemd/system/nomad.service && systemctl daemon-reload && systemctl start nomad && systemctl status nomad 
+echo "  Environment=VAULT_TOKEN=d2756bbc-28b0-e3f4-cbe5-9ee8c7c7e795" >> /etc/systemd/system/nomad.service && systemctl daemon-reload && systemctl start nomad && systemctl status nomad 
 ```
 
+# Cronjob for
+```bash
+vault token renew d2756bbc-28b0-e3f4-cbe5-9ee8c7c7e795
+```
